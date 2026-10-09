@@ -10,6 +10,7 @@ private:
     string name;
     string color;
     string characteristic;
+    int categoryId;
 
 public:
     Fish() {
@@ -17,6 +18,7 @@ public:
         name = "Unknown";
         color = "Unknown";
         characteristic = "Unknown";
+        categoryId = 0;
     }
 
     Fish(int i) {
@@ -24,6 +26,7 @@ public:
         name = "Unknown";
         color = "Unknown";
         characteristic = "Unknown";
+        categoryId = 0;
     }
 
     Fish(int i, string n) {
@@ -31,6 +34,7 @@ public:
         name = n;
         color = "Unknown";
         characteristic = "Unknown";
+        categoryId = 0;
     }
 
     Fish(int i, string n, string c) {
@@ -38,6 +42,7 @@ public:
         name = n;
         color = c;
         characteristic = "Unknown";
+        categoryId = 0;
     }
 
     Fish(int i, string n, string c, string ch) {
@@ -45,6 +50,7 @@ public:
         name = n;
         color = c;
         characteristic = ch;
+        categoryId = 0;
     }
 
     int getId() {
@@ -63,6 +69,10 @@ public:
         return characteristic;
     }
 
+    int getCategoryId() {
+        return categoryId;
+    }
+
     void setId(int i) {
         id = i;
     }
@@ -79,11 +89,16 @@ public:
         characteristic = ch;
     }
 
+    void setCategoryId(int cId) {
+        categoryId = cId;
+    }
+
     void displayFishInfo() {
         cout << "ID: " << id << endl;
         cout << "Name: " << name << endl;
         cout << "Color: " << color << endl;
         cout << "Characteristic: " << characteristic << endl;
+        cout << "Category ID: " << categoryId << endl;
     }
 };
 
@@ -253,50 +268,84 @@ int main() {
         }
     }
 
-    Category category1;
-    Category category2(2);
-    Category category3(3, "Tropical Fish");
-    Category category4(
-        4,
-        "Goldfish",
-        "Gold and orange ornamental fish"
-    );
+    Category categories[] = {
+        Category(1, "Tropical Fish",
+                 "Tropical ornamental fish"),
+        Category(2, "Goldfish and Koi",
+                 "Goldfish and koi varieties"),
+        Category(3, "Community Fish",
+                 "Fish suitable for community aquariums")
+    };
+
+    int categoryCount =
+        sizeof(categories) / sizeof(categories[0]);
+
+    fishes[0].setCategoryId(3);
+    fishes[1].setCategoryId(3);
+    fishes[2].setCategoryId(1);
+    fishes[3].setCategoryId(2);
+    fishes[4].setCategoryId(2);
+    fishes[5].setCategoryId(3);
+    fishes[6].setCategoryId(1);
+    fishes[7].setCategoryId(1);
+    fishes[8].setCategoryId(3);
+    fishes[9].setCategoryId(3);
+    fishes[10].setCategoryId(1);
+    fishes[11].setCategoryId(1);
+    fishes[12].setCategoryId(1);
+    fishes[13].setCategoryId(3);
+    fishes[14].setCategoryId(3);
 
     cout << endl;
-    cout << "===== CATEGORY CONSTRUCTOR TEST =====" << endl;
+    cout << "===== ALL CATEGORIES =====" << endl;
 
-    category1.displayCategoryInfo();
-    cout << endl;
-
-    category2.displayCategoryInfo();
-    cout << endl;
-
-    category3.displayCategoryInfo();
-    cout << endl;
-
-    category4.displayCategoryInfo();
-    cout << endl;
-
-    cout << "===== UPDATE CATEGORY INFORMATION =====" << endl;
-
-    category4.setCategoryName("Goldfish and Koi");
-    category4.setDescription(
-        "Ornamental goldfish and koi varieties"
-    );
-
-    cout << "Updated Category ID: "
-         << category4.getCategoryId() << endl;
-
-    cout << "Updated Category Name: "
-         << category4.getCategoryName() << endl;
-
-    cout << "Updated Description: "
-         << category4.getDescription() << endl;
+    for (int i = 0; i < categoryCount; i++) {
+        categories[i].displayCategoryInfo();
+        cout << "------------------------" << endl;
+    }
 
     cout << endl;
-    cout << "===== UPDATED CATEGORY INFORMATION =====" << endl;
+    cout << "===== FISH BY CATEGORY =====" << endl;
 
-    category4.displayCategoryInfo();
+    int selectedCategoryId;
+
+    cout << "Enter category ID (1-3): ";
+    cin >> selectedCategoryId;
+
+    bool categoryFound = false;
+
+    for (int i = 0; i < categoryCount; i++) {
+        if (categories[i].getCategoryId() == selectedCategoryId) {
+            categoryFound = true;
+
+            cout << endl;
+            cout << "Selected category: "
+                 << categories[i].getCategoryName() << endl;
+
+            cout << "Description: "
+                 << categories[i].getDescription() << endl;
+
+            bool fishFound = false;
+
+            for (int j = 0; j < size; j++) {
+                if (fishes[j].getCategoryId() == selectedCategoryId) {
+                    fishes[j].displayFishInfo();
+                    cout << "------------------------" << endl;
+                    fishFound = true;
+                }
+            }
+
+            if (!fishFound) {
+                cout << "No fish belongs to this category." << endl;
+            }
+
+            break;
+        }
+    }
+
+    if (!categoryFound) {
+        cout << "Invalid category ID." << endl;
+    }
 
     return 0;
 }
