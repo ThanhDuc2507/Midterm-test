@@ -87,6 +87,38 @@ public:
     }
 };
 
+class Category {
+private:
+    int CategoryId;
+    string CategoryName;
+    string Description;
+
+public:
+    Category() {
+        CategoryId = 0;
+        CategoryName = "Unknown";
+        Description = "Unknown";
+    }
+
+    Category(int id) {
+        CategoryId = id;
+        CategoryName = "Unknown";
+        Description = "Unknown";
+    }
+
+    Category(int id, string name) {
+        CategoryId = id;
+        CategoryName = name;
+        Description = "Unknown";
+    }
+
+    Category(int id, string name, string description) {
+        CategoryId = id;
+        CategoryName = name;
+        Description = description;
+    }
+};
+
 int main() {
     Fish fish1;
     Fish fish2(2);
@@ -180,8 +212,6 @@ int main() {
         cout << endl;
         cout << "Color: " << colors[i] << endl;
 
-        bool found = false;
-
         for (int j = 0; j < size; j++) {
             if (fishes[j].getColor() == colors[i]) {
                 cout << "ID: " << fishes[j].getId()
@@ -189,15 +219,21 @@ int main() {
                      << " | Characteristic: "
                      << fishes[j].getCharacteristic()
                      << endl;
-
-                found = true;
             }
         }
-
-        if (!found) {
-            cout << "No fish found." << endl;
-        }
     }
+
+    Category category1;
+    Category category2(2);
+    Category category3(3, "Tropical Fish");
+    Category category4(
+        4,
+        "Goldfish",
+        "Gold and orange ornamental fish"
+    );
+
+    cout << endl;
+    cout << "===== CATEGORY OBJECTS CREATED =====" << endl;
 
     return 0;
 }
