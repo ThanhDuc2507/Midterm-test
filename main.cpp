@@ -1,4 +1,4 @@
-
+```cpp
 #include <iostream>
 #include <string>
 using namespace std;
@@ -45,16 +45,48 @@ public:
         color = c;
         characteristic = ch;
     }
+
+    int getId() {
+        return id;
+    }
+
+    string getName() {
+        return name;
+    }
+
+    string getColor() {
+        return color;
+    }
+
+    string getCharacteristic() {
+        return characteristic;
+    }
+
+    void setId(int i) {
+        id = i;
+    }
+
+    void setName(string n) {
+        name = n;
+    }
+
+    void setColor(string c) {
+        color = c;
+    }
+
+    void setCharacteristic(string ch) {
+        characteristic = ch;
+    }
 };
 
 int main() {
-    Fish fish1;
-    Fish fish2(2);
-    Fish fish3(3, "Betta");
-    Fish fish4(4, "Goldfish", "Orange");
-    Fish fish5(5, "Koi", "Red and White", "Friendly");
+    Fish fish(1, "Betta", "Blue", "Active");
 
-    cout << "Five Fish objects created successfully!" << endl;
+    cout << "Name: " << fish.getName() << endl;
+
+    fish.setName("Guppy");
+
+    cout << "Updated name: " << fish.getName() << endl;
 
     return 0;
 }
