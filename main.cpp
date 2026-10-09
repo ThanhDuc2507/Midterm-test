@@ -1,6 +1,7 @@
 
 #include <iostream>
 #include <string>
+#include <vector>
 using namespace std;
 
 class Fish {
@@ -153,6 +154,49 @@ int main() {
     for (int i = 0; i < size; i++) {
         fishes[i].displayFishInfo();
         cout << "------------------------" << endl;
+    }
+
+    vector<string> colors;
+
+    for (int i = 0; i < size; i++) {
+        bool colorExists = false;
+
+        for (int j = 0; j < (int)colors.size(); j++) {
+            if (colors[j] == fishes[i].getColor()) {
+                colorExists = true;
+                break;
+            }
+        }
+
+        if (!colorExists) {
+            colors.push_back(fishes[i].getColor());
+        }
+    }
+
+    cout << endl;
+    cout << "===== GROUP FISH BY COLOR =====" << endl;
+
+    for (int i = 0; i < (int)colors.size(); i++) {
+        cout << endl;
+        cout << "Color: " << colors[i] << endl;
+
+        bool found = false;
+
+        for (int j = 0; j < size; j++) {
+            if (fishes[j].getColor() == colors[i]) {
+                cout << "ID: " << fishes[j].getId()
+                     << " | Name: " << fishes[j].getName()
+                     << " | Characteristic: "
+                     << fishes[j].getCharacteristic()
+                     << endl;
+
+                found = true;
+            }
+        }
+
+        if (!found) {
+            cout << "No fish found." << endl;
+        }
     }
 
     return 0;
