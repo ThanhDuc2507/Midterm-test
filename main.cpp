@@ -87,10 +87,43 @@ public:
 };
 
 int main() {
-    Fish fish(1, "Betta", "Blue", "Active");
+    Fish fish1;
+    Fish fish2(2);
+    Fish fish3(3, "Betta");
+    Fish fish4(4, "Goldfish", "Orange");
+    Fish fish5(5, "Koi", "Red and White", "Friendly");
 
-    fish.displayFishInfo();
+    cout << "===== ORIGINAL FISH INFORMATION =====" << endl;
+
+    cout << "\nFish 1:" << endl;
+    fish1.displayFishInfo();
+
+    cout << "\nFish 2:" << endl;
+    fish2.displayFishInfo();
+
+    cout << "\nFish 3:" << endl;
+    fish3.displayFishInfo();
+
+    cout << "\nFish 4:" << endl;
+    fish4.displayFishInfo();
+
+    cout << "\nFish 5:" << endl;
+    fish5.displayFishInfo();
+
+    fish5.setName("Butterfly Koi");
+    fish5.setColor("Black and White");
+    fish5.setCharacteristic("Peaceful and elegant");
+
+    cout << "\n===== UPDATED FISH INFORMATION =====" << endl;
+
+    cout << "ID: " << fish5.getId() << endl;
+    cout << "Name: " << fish5.getName() << endl;
+    cout << "Color: " << fish5.getColor() << endl;
+    cout << "Characteristic: "
+         << fish5.getCharacteristic() << endl;
+
+    cout << "\n===== VERIFY CHANGES =====" << endl;
+    fish5.displayFishInfo();
 
     return 0;
 }
-
