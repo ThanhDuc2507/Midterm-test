@@ -77,16 +77,19 @@ public:
     void setCharacteristic(string ch) {
         characteristic = ch;
     }
+
+    void displayFishInfo() {
+        cout << "ID: " << id << endl;
+        cout << "Name: " << name << endl;
+        cout << "Color: " << color << endl;
+        cout << "Characteristic: " << characteristic << endl;
+    }
 };
 
 int main() {
     Fish fish(1, "Betta", "Blue", "Active");
 
-    cout << "Name: " << fish.getName() << endl;
-
-    fish.setName("Guppy");
-
-    cout << "Updated name: " << fish.getName() << endl;
+    fish.displayFishInfo();
 
     return 0;
 }
