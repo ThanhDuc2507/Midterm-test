@@ -93,37 +93,67 @@ int main() {
     Fish fish4(4, "Goldfish", "Orange");
     Fish fish5(5, "Koi", "Red and White", "Friendly");
 
-    cout << "===== ORIGINAL FISH INFORMATION =====" << endl;
+    cout << "===== ORIGINAL 5 FISH OBJECTS =====" << endl;
 
-    cout << "\nFish 1:" << endl;
     fish1.displayFishInfo();
+    cout << endl;
 
-    cout << "\nFish 2:" << endl;
     fish2.displayFishInfo();
+    cout << endl;
 
-    cout << "\nFish 3:" << endl;
     fish3.displayFishInfo();
+    cout << endl;
 
-    cout << "\nFish 4:" << endl;
     fish4.displayFishInfo();
+    cout << endl;
 
-    cout << "\nFish 5:" << endl;
     fish5.displayFishInfo();
+    cout << endl;
+
+    cout << "===== UPDATE FISH INFORMATION =====" << endl;
 
     fish5.setName("Butterfly Koi");
     fish5.setColor("Black and White");
     fish5.setCharacteristic("Peaceful and elegant");
 
-    cout << "\n===== UPDATED FISH INFORMATION =====" << endl;
-
-    cout << "ID: " << fish5.getId() << endl;
-    cout << "Name: " << fish5.getName() << endl;
-    cout << "Color: " << fish5.getColor() << endl;
-    cout << "Characteristic: "
+    cout << "Updated name: " << fish5.getName() << endl;
+    cout << "Updated color: " << fish5.getColor() << endl;
+    cout << "Updated characteristic: "
          << fish5.getCharacteristic() << endl;
 
-    cout << "\n===== VERIFY CHANGES =====" << endl;
+    cout << endl;
+    cout << "===== UPDATED FISH INFORMATION =====" << endl;
+
     fish5.displayFishInfo();
+
+    Fish fishes[] = {
+        fish1,
+        fish2,
+        fish3,
+        fish4,
+        fish5,
+        Fish(6, "Guppy", "Yellow", "Peaceful"),
+        Fish(7, "Angelfish", "Black and White", "Elegant"),
+        Fish(8, "Discus", "Blue", "Calm"),
+        Fish(9, "Molly", "Black", "Hardy"),
+        Fish(10, "Platy", "Orange", "Active"),
+        Fish(11, "Neon Tetra", "Blue", "Small and active"),
+        Fish(12, "Oscar", "Red and Black", "Intelligent"),
+        Fish(13, "Flowerhorn", "Red", "Distinctive head"),
+        Fish(14, "Swordtail", "Orange", "Long tail"),
+        Fish(15, "Corydoras", "Brown", "Bottom-dwelling")
+    };
+
+    int size = sizeof(fishes) / sizeof(fishes[0]);
+
+    cout << endl;
+    cout << "===== COMPLETE LIST OF 15 ORNAMENTAL FISH ====="
+         << endl;
+
+    for (int i = 0; i < size; i++) {
+        fishes[i].displayFishInfo();
+        cout << "------------------------" << endl;
+    }
 
     return 0;
 }
