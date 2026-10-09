@@ -117,6 +117,36 @@ public:
         CategoryName = name;
         Description = description;
     }
+
+    int getCategoryId() {
+        return CategoryId;
+    }
+
+    string getCategoryName() {
+        return CategoryName;
+    }
+
+    string getDescription() {
+        return Description;
+    }
+
+    void setCategoryId(int id) {
+        CategoryId = id;
+    }
+
+    void setCategoryName(string name) {
+        CategoryName = name;
+    }
+
+    void setDescription(string description) {
+        Description = description;
+    }
+
+    void displayCategoryInfo() {
+        cout << "Category ID: " << CategoryId << endl;
+        cout << "Category Name: " << CategoryName << endl;
+        cout << "Description: " << Description << endl;
+    }
 };
 
 int main() {
@@ -233,7 +263,40 @@ int main() {
     );
 
     cout << endl;
-    cout << "===== CATEGORY OBJECTS CREATED =====" << endl;
+    cout << "===== CATEGORY CONSTRUCTOR TEST =====" << endl;
+
+    category1.displayCategoryInfo();
+    cout << endl;
+
+    category2.displayCategoryInfo();
+    cout << endl;
+
+    category3.displayCategoryInfo();
+    cout << endl;
+
+    category4.displayCategoryInfo();
+    cout << endl;
+
+    cout << "===== UPDATE CATEGORY INFORMATION =====" << endl;
+
+    category4.setCategoryName("Goldfish and Koi");
+    category4.setDescription(
+        "Ornamental goldfish and koi varieties"
+    );
+
+    cout << "Updated Category ID: "
+         << category4.getCategoryId() << endl;
+
+    cout << "Updated Category Name: "
+         << category4.getCategoryName() << endl;
+
+    cout << "Updated Description: "
+         << category4.getDescription() << endl;
+
+    cout << endl;
+    cout << "===== UPDATED CATEGORY INFORMATION =====" << endl;
+
+    category4.displayCategoryInfo();
 
     return 0;
 }
